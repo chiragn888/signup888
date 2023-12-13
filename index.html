@@ -4,7 +4,7 @@
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -25,6 +25,8 @@
     <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
     <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
 
+    <!-- Adding 'Skip Login' button -->
+    <button class="button" onclick="location.href='end.html';">Skip Login</button>
 
 </div>
 </center>
@@ -65,12 +67,9 @@
     
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
-
-
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
@@ -83,7 +82,6 @@
       .catch((error) => {
           document.getElementById('errormessage').innerHTML=""+error.message;
       });
-
   })
 
  document.getElementById('google-button').addEventListener('click',Googlelogin);
@@ -94,32 +92,23 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
   function Googlelogin(){
       signInWithPopup(auth, provider)
       .then((result) => {
-        
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        
         const user = result.user;
-        window.location.replace('end.html')
-      
+        window.location.replace('end.html');
       }).catch((error) => {
-        
         const errorCode = error.code;
         const errorMessage = error.message;
-        
         const email = error.email;
-       
         const credential = GoogleAuthProvider.credentialFromError(error);
         document.getElementById('errormessage').innerHTML=""+error.message;
-       
       });
-
   }
   AOS.init();
 
   </script>
 <script src="index.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
 
 <script type="module">
 
@@ -129,31 +118,24 @@ const auth = getAuth();
        ev.preventDefault
        var email = document.getElementById('lemail1').value;
        var password =document.getElementById("lpassword1").value;
-   var confirm_pass =document.getElementById("confirm_password").value;
-   var err=document.getElementById("errormessage1");
+    var confirm_pass =document.getElementById("confirm_password").value;
+    var err=document.getElementById("errormessage1");
 
-   if(password!== confirm_pass) {
+    if(password!== confirm_pass) {
        err.innerHTML = "Passwords do not match!";
-   }
+    }
    else {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             window.location.replace("end.html");
-
           })
           .catch((error) => {
             err.innerHTML=""+error.message
           });
 
    }
-
-
    })
 
 </script>
-
-
-
 </body>
-
 </html>
