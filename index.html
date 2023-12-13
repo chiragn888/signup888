@@ -1,159 +1,84 @@
+<!-- Enquiry.html -->
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Sign-in</title>
+    <title>Enquiry Form</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
-<div class="flip-container" onclick="this.classList.toggle('hover');">
-  <div class="flipper">
-    <div class="front">
-  <div id="part1" >
-
-<center><h1 id="sign-in">Sign In</h1></center>
-<center>
-<div id="border">
-    <p id="errormessage" style="color: red;font-size: 20px"></p>
-    <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
-    <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
-
-    <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
-    <button id="sign-in-button" class="button">Sign In</button>
-    <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
-    <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
-
-
-</div>
-</center>
-</div>
-
-    </div>
-    <div class="back">
-  <div id="part2" >
-
-<h1 id="sign-up">Sign Up</h1>
-<center>
-<div id="border1">
-    <p id="errormessage1" style="color: red;font-size: 20px"></p>
-    <input id="lemail1"  type="email" class="input-field1" placeholder="Email"><br>
-    <input id="lpassword1"  type="password" class="input-field2" placeholder="Password" required><br>
-     <input id="confirm_password"  type="password" class="input-field2" placeholder=" Confirm Password" required><br>
-    <br><button id="sign-up-button" class="button">Create Account</button>
-    <center><img id="google-button1" class="gbutton" src="gbt.png"  ></center>
-     <p><p  id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
-
-</div>
-</center>
-</div>
-</div>
-  </div>
+<h1 id="enquiry-form-title">Enquiry Form</h1>
+<div id="enquiryForm">
+    <input id="name" type="text" class="input-field" placeholder="Name"><br>
+    <input id="email" type="email" class="input-field" placeholder="Email"><br>
+    <input id="phoneNumber" type="text" class="input-field" placeholder="Phone Number"><br>
+    <textarea id="query" class="input-field" placeholder="Your Query"></textarea><br>
+    <button id="submitBtn" class="button">Submit</button>
 </div>
 </center>
 
 <script type="module">
+    import { GoogleSpreadsheet } from "https://cdn.skypack.dev/google-spreadsheet";
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-
-  const firebaseConfig = {
+    const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID_HERE');
     
-  };
+    async function accessSpreadsheet(client_email, private_key, data) {
+        await doc.useServiceAccountAuth({
+            client_email,
+            private_key,
+        });
+        await doc.loadInfo();
+    
+        const sheet = doc.sheetsByIndex[0];
+        await sheet.addRow(data);
+    }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-
-
-
-  document.getElementById('sign-in-button').addEventListener('click',function (){
-      var email= document.getElementById('lemail').value;
-      var password = document.getElementById('lpassword').value;
-
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        window.location.replace('end.html');
-      })
-      .catch((error) => {
-          document.getElementById('errormessage').innerHTML=""+error.message;
-      });
-
-  })
-
- document.getElementById('google-button').addEventListener('click',Googlelogin);
-document.getElementById('google-button1').addEventListener('click',Googlelogin);
-
-  let provider = new GoogleAuthProvider()
-
-  function Googlelogin(){
-      signInWithPopup(auth, provider)
-      .then((result) => {
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener('click', function()  {
+        const nameField = document.getElementById('name');
+        const emailField = document.getElementById('email');
+        const phoneNumberField = document.getElementById('phoneNumber');
+        const queryField = document.getElementById('query');
         
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        
-        const user = result.user;
-        window.location.replace('end.html')
-      
-      }).catch((error) => {
-        
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        
-        const email = error.email;
-       
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        document.getElementById('errormessage').innerHTML=""+error.message;
-       
-      });
+        const data = {
+            Name: nameField.value,
+            Email: emailField.value,
+            PhoneNumber: phoneNumberField.value,
+            Query: queryField.value,
+        };
 
-  }
-  AOS.init();
+        // replace client_email and private_key with real ones
+        accessSpreadsheet('client_email', 'private_key', data);
+    });
+</script>
+</body>
+</html>
 
-  </script>
-<script src="index.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<!-- Modifications to index.html -->
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>home page</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="index.html">
+</head>
+<body>
+<center>
+    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <div id="border">
+        <br><br>
+    <button id="logout" class="button">sign out</button>
+    <!-- Adding a link to the enquiry form -->
+    <a href="Enquiry.html" id="enquiryLink">Add Enquiry</a>
+    </div>
+</center>
 
 <script type="module">
-
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-const auth = getAuth();
-   document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
-       var email = document.getElementById('lemail1').value;
-       var password =document.getElementById("lpassword1").value;
-   var confirm_pass =document.getElementById("confirm_password").value;
-   var err=document.getElementById("errormessage1");
-
-   if(password!== confirm_pass) {
-       err.innerHTML = "Passwords do not match!";
-   }
-   else {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            window.location.replace("end.html");
-
-          })
-          .catch((error) => {
-            err.innerHTML=""+error.message
-          });
-
-   }
-
-
-   })
-
+   // The rest of your JavaScript code...
 </script>
-
-
-
 </body>
-
 </html>
