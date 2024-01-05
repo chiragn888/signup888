@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>home page</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="index.html">
+</head>
+<body>
+<center>
+    <h1 id="homepage-title" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi <span id="username-display">Username</span>, this is homepage</h1>
+    <div id="border">
+        <br><br>
+    <button id="logout" class="button">sign out</button>
+    </div>
+</center>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+
+  const firebaseConfig = {
+   
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+      if (user) {
+          document.getElementById('username-display').textContent = user.displayName || user.email;
+      } else {
+          document.getElementById('username-display').textContent = 'Guest';
+      }
+  });
+
+   document.getElementById('logout').addEventListener('click',function (){
+         signOut(auth).then(() => {
+          window.alert('Logged out sucessfully!');
+          location.replace('index.html')
+        }).catch((error) => {
+          console.log(error.message);
+        });
+    });
+
+</script>
+</body>
+</html>
