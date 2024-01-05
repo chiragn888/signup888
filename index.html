@@ -4,7 +4,7 @@
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -17,16 +17,15 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
-    <input id="username" name="username" type="text" class="input-field1" placeholder="Username"><br>
+<input id="username" class="input-field3" type="text" placeholder="Username"><br> <!-- New username input field -->
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
-
+  
     <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
     <button id="sign-in-button" class="button">Sign In</button>
     <button id="skip-login-button" class="button">Skip Login</button>
     <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
     <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
-
 
 </div>
 </center>
@@ -40,9 +39,11 @@
 <center>
 <div id="border1">
     <p id="errormessage1" style="color: red;font-size: 20px"></p>
+<input id="username1" class="input-field3" type="text" placeholder="Username"><br> <!-- New username input field -->
     <input id="lemail1"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword1"  type="password" class="input-field2" placeholder="Password" required><br>
      <input id="confirm_password"  type="password" class="input-field2" placeholder=" Confirm Password" required><br>
+    
     <br><button id="sign-up-button" class="button">Create Account</button>
     <center><img id="google-button1" class="gbutton" src="gbt.png"  ></center>
      <p><p  id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
@@ -78,14 +79,15 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-
-
   document.getElementById('sign-in-button').addEventListener('click',function (){
+      var username = document.getElementById('username').value; // Grab the username
       var email= document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
-
+  
+      // Authenticate with Firebase using email and password
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        // Username can be used here if needed or stored in the user's profile
         window.location.replace('end.html');
       })
       .catch((error) => {
@@ -136,9 +138,10 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
 <script type="module">
 
 import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-const auth = getAuth();
+const auth = getAuth(app);
    document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
+       ev.preventDefault();
+       var username = document.getElementById('username1').value; // Grab the username
        var email = document.getElementById('lemail1').value;
        var password =document.getElementById("lpassword1").value;
    var confirm_pass =document.getElementById("confirm_password").value;
@@ -148,8 +151,10 @@ const auth = getAuth();
        err.innerHTML = "Passwords do not match!";
    }
    else {
-        createUserWithEmailAndPassword(auth, email, password)
+   // Create the user with email and password, and also include the username in the additional user info (not implemented in Firebase Authentication by default)
+   createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
+            // Store the username in the user's profile or in a separate database
             window.location.replace("end.html");
 
           })
@@ -158,8 +163,6 @@ const auth = getAuth();
           });
 
    }
-
-
    })
 
 </script>
