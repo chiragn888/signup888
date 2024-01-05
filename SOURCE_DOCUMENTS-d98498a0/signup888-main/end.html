@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-    <h1 id="homepage-title" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi <span id="username-display">Username</span>, this is homepage</h1>
+    <h1 id="welcomeUser" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi, <span id="usernameSpan">User</span>! This is homepage.</h1>
     <div id="border">
         <br><br>
     <button id="logout" class="button">sign out</button>
@@ -16,34 +16,33 @@
 </center>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
-  const firebaseConfig = {
-   
-  };
+    const firebaseConfig = {
+      // Your Firebase config
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-  onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, user => {
       if (user) {
-          document.getElementById('username-display').textContent = user.displayName || user.email;
-      } else {
-          document.getElementById('username-display').textContent = 'Guest';
+        const displayName = user.displayName || 'User'; // Fallback to 'User' if displayName is not set
+        document.getElementById('usernameSpan').textContent = displayName;
       }
-  });
-
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
-        }).catch((error) => {
-          console.log(error.message);
-        });
     });
 
+    document.getElementById('logout').addEventListener('click', function () {
+      signOut(auth).then(() => {
+        window.alert('Logged out successfully!');
+        location.replace('index.html')
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    });
 </script>
 </body>
 </html>
