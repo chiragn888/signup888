@@ -161,3 +161,20 @@
 .back {
   transform: rotateY(180deg);
 }
+
+/* Added styles for 'Add Enquiry' button */
+.add-enquiry-button {
+    width :80%;
+    height: 37px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-style: none;
+    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.add-enquiry-button:hover {
+    zoom: 105%;
+}
