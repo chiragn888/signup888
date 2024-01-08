@@ -1,53 +1,46 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>home page</title>
+    <meta charset="UTF-8">
+    <title>Enquiry Form</title>
     <link rel="stylesheet" href="index.css">
-    <link href="index.html">
 </head>
 <body>
-<center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
-    <div id="border">
-        <br><br>
-        <button id="logout" class="button">sign out</button>
-        <!-- Add Enquiry Button -->
-        <button id="add-enquiry" class="add-enquiry-button">Add Enquiry</button>
+    <div class="container">
+        <h2>Enquiry Form</h2>
+        <form id="enquiry-form">
+            <div class="input-container">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="input-container">
+                <label for="query">Query</label>
+                <textarea id="query" name="query" required></textarea>
+            </div>
+            <button type="submit" class="button">Submit Enquiry</button>
+        </form>
     </div>
-</center>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-    import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-    import { getAuth, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-    import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-
-    const firebaseConfig = {
-    
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth(app);
-
-    // Event listener for the Add Enquiry button
-    document.getElementById('add-enquiry').addEventListener('click', function () {
-        // Redirect to the enquiry form
-        location.replace('enquiry_form.html');
-    });
-
-    document.getElementById('logout').addEventListener('click',function (){
-        signOut(auth).then(() => {
-            window.alert('Logged out sucessfully!');
-            location.replace('index.html')
-        }).catch((error) => {
-            console.log(error.message);
+    <script>
+        // Example Google Sheets script url
+        // Replace with your own Google Sheets script url
+        const scriptURL = 'https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_ID/exec';
+        
+        document.getElementById('enquiry-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const form = e.target;
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for contacting us! We'll get back to you soon."))
+                .catch(error => console.error('Error!', error.message));
         });
-    });
-</script>
+    </script>
 </body>
 </html>
