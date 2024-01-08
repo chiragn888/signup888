@@ -152,7 +152,7 @@
   backface-visibility: hidden;
   position: absolute;
   top: 0;
-  left: 0;
+    left: 0;
 }
 .front {
   z-index: 2;
