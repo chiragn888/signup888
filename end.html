@@ -8,21 +8,25 @@
 </head>
 <body>
 <center>
-    <h1 id="welcome-message" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
     <div id="border">
         <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">sign out</button>
+        <!-- Add Enquiry Button -->
+        <button id="add-enquiry" class="add-enquiry-button">Add Enquiry</button>
     </div>
 </center>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
     import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-    import { getAuth, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { getAuth, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
     const firebaseConfig = {
-      // Your firebase config
+    
     };
 
     // Initialize Firebase
@@ -30,23 +34,18 @@
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        // User is signed in, extract user name
-        const username = localStorage.getItem("username") || "User";
-        document.getElementById('welcome-message').innerText = `Hi ${username}, welcome to the home page`;
-      } else {
-        // No user is signed in
-        console.log("No user signed in");
-      }
+    // Event listener for the Add Enquiry button
+    document.getElementById('add-enquiry').addEventListener('click', function () {
+        // Redirect to the enquiry form
+        location.replace('enquiry_form.html');
     });
 
     document.getElementById('logout').addEventListener('click',function (){
         signOut(auth).then(() => {
-          window.alert('Logged out successfully!');
-          location.replace('index.html');
+            window.alert('Logged out sucessfully!');
+            location.replace('index.html')
         }).catch((error) => {
-          console.log(error.message);
+            console.log(error.message);
         });
     });
 </script>
