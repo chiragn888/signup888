@@ -4,7 +4,7 @@
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -17,12 +17,13 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
-    <input id="username" name="username" type="text" class="input-field1" placeholder="Username"><br>
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
 
     <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
     <button id="sign-in-button" class="button">Sign In</button>
+    <!-- Added a link around Add Enquiry button to redirect to enquiry_form.html -->
+    <a href="enquiry_form.html"><button id="add-enquiry-button" class="button">Add Enquiry</button></a>
     <button id="skip-login-button" class="button">Skip Login</button>
     <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
     <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
@@ -78,8 +79,6 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-
-
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
@@ -99,7 +98,7 @@
     })
 
  document.getElementById('google-button').addEventListener('click',Googlelogin);
-document.getElementById('google-button1').addEventListener('click',Googlelogin);
+ document.getElementById('google-button1').addEventListener('click',Googlelogin);
 
   let provider = new GoogleAuthProvider()
 
