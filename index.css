@@ -1,13 +1,14 @@
-#sign-in{
+#sign-in {
     text-align: center;
     font-size: 70px;
-    font-weight:800;
+    font-weight: 800;
     color: white;
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.input-field1{
-    width :90%;
+
+.input-field1 {
+    width: 90%;
     height: 50px;
     padding-left: 20px;
     border-radius: 8px;
@@ -19,14 +20,17 @@
     margin-bottom: 20px;
     font-size: 17px;
 }
-.input-field1::placeholder{
+
+.input-field1::placeholder {
     color: white;
 }
-.input-field1:hover{
+
+.input-field1:hover {
     zoom: 105%;
 }
-.input-field2{
-    width :90%;
+
+.input-field2 {
+    width: 90%;
     height: 50px;
     padding-left: 20px;
     border-radius: 8px;
@@ -38,14 +42,18 @@
     margin-bottom: 15px;
     font-size: 17px;
 }
-.input-field2::placeholder{
+
+.input-field2::placeholder {
     color: white;
 }
-.input-field2:hover{
+
+.input-field2:hover {
     zoom: 105%;
 }
-.button{
-    width :80%;
+
+.button,
+#add-enquiry-button {
+    width: 80%;
     height: 37px;
     border-radius: 4px;
     font-size: 16px;
@@ -55,16 +63,19 @@
     margin-bottom: 15px;
     margin-top: 10px;
 }
-.button:hover{
-   zoom: 105%;
+
+.button:hover,
+#add-enquiry-button:hover {
+    zoom: 105%;
     cursor: pointer;
 }
-#border{
+
+#border {
     height: 500px;
     width: 400px;
 }
 
-#fp{
+#fp {
     color: white;
     font-size: 15px;
     font-family: ".AppleSystemUIFont";
@@ -72,10 +83,12 @@
     margin-bottom: 10px;
     margin-top: 20px;
 }
-#fp:hover{
+
+#fp:hover {
     color: dodgerblue;
 }
-.fp1{
+
+.fp1 {
     color: white;
     font-size: 12px;
     font-family: ".AppleSystemUIFont";
@@ -83,20 +96,24 @@
     margin-bottom: 10px;
     margin-top: 35px;
 }
-.fp1:hover{
+
+.fp1:hover {
     color: dodgerblue;
     cursor: pointer;
 }
-::-webkit-scrollbar{
-    overflow: hidden ;
+
+::-webkit-scrollbar {
+    overflow: hidden;
 }
-.body{
+
+.body {
     background-color: #050505;
     height: max-content;
     top: 0;
     margin-top: 0;
     padding-top: 0;
 }
+
 .gbutton {
     width: 60%;
     padding-left: 20%;
@@ -104,60 +121,70 @@
     border-radius: 4px;
     background-color: white;
 }
-.gbutton:hover{
+
+.gbutton:hover {
     zoom: 105%;
     cursor: pointer;
 }
 
-#sign-up{
+#sign-up {
     text-align: center;
     font-size: 70px;
-    font-weight:800;
+    font-weight: 800;
     color: white;
     margin-top: 100px;
     margin-bottom: 100px;
 }
-#border1{
+
+#border1 {
     height: 500px;
     width: 400px;
 }
-#part1{
+
+#part1 {
     display: block;
     background-color: black;
 }
-#part2{
+
+#part2 {
     display: block;
     background-color: black;
 }
 
 .flip-container {
-  perspective: 1000px;
+    perspective: 1000px;
 }
+
 .flip-container.hover .flipper {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
+
 .flip-container,
 .front,
 .back {
-  width: 100%;
-  height: 700px;
+    width: 100%;
+    height: 700px;
 }
+
 .flipper {
-  transition: 1.6s;
-  transform-style: preserve-3d;
-  position: relative;
+    transition: 1.6s;
+    transform-style: preserve-3d;
+    position: relative;
 }
+
 .front,
 .back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
+
 .front {
-  z-index: 2;
-  transform: rotateY(0deg);
+    z-index: 2;
+    transform: rotateY(0deg);
 }
+
 .back {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
