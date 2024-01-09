@@ -6,7 +6,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.input-field1{
+.input-field1, .user-details-field {
     width :90%;
     height: 50px;
     padding-left: 20px;
@@ -19,10 +19,10 @@
     margin-bottom: 20px;
     font-size: 17px;
 }
-.input-field1::placeholder{
+.input-field1::placeholder, .user-details-field::placeholder{
     color: white;
 }
-.input-field1:hover{
+.input-field1:hover, .user-details-field:hover{
     zoom: 105%;
 }
 .input-field2{
@@ -44,7 +44,7 @@
 .input-field2:hover{
     zoom: 105%;
 }
-.button{
+.button, .update_details{
     width :80%;
     height: 37px;
     border-radius: 4px;
@@ -55,7 +55,7 @@
     margin-bottom: 15px;
     margin-top: 10px;
 }
-.button:hover{
+.button:hover, .update_details:hover{
    zoom: 105%;
     cursor: pointer;
 }
@@ -160,4 +160,30 @@
 }
 .back {
   transform: rotateY(180deg);
+}
+
+/* user details form styles */
+.user-details-field::placeholder{
+    color: rgba(255, 255, 255, 0.7);
+}
+input[type="file"] {
+    width: 90%;
+    background-color: transparent;
+    margin-bottom: 20px;
+    color: white;
+}
+.user-details-field, .user-details-field[name="phone"] {
+    width: calc(90% - 40px); /* 20px padding on both sides */
+}
+.user-details-field[name="address"] {
+    min-height: 100px; /* larger height for address field */
+}
+.update_details {
+    background-color: #6fa8dc; /* different color for update button */
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 20px;
+}
+.update_details:hover {
+    background-color: #3d85c6; /* darker shade on hover */
 }
