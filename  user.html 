@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>User Details Form</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<center>
+    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 50px">Enter Your Details</h1>
+    <div id="border">
+        <form id="user-details-form">
+            <input type="text" class="input-field1" placeholder="Your Name" id="user-name" required><br>
+            <input type="text" class="input-field1" placeholder="Your Phone Number" id="user-phone" required><br>
+            <textarea class="input-field1" placeholder="Your Address" id="user-address" required></textarea><br>
+            <input type="file" class="input-field1" id="user-photo" required><br>
+            <button type="submit" class="button">Save Details</button>
+        </form>
+    </div>
+</center>
+
+<script type="module">
+    document.getElementById('user-details-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const userName = document.getElementById('user-name').value;
+        const userPhone = document.getElementById('user-phone').value;
+        const userAddress = document.getElementById('user-address').value;
+        const userPhoto = document.getElementById('user-photo').files[0];
+
+        // Assuming you have set up a Google Apps Script to process the form and save it to a Google Sheet.
+        // Replace 'YOUR_GOOGLE_APPS_SCRIPT_URL' with the URL of the script.
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+
+        const formData = new FormData();
+        formData.append('Name', userName);
+        formData.append('Phone', userPhone);
+        formData.append('Address', userAddress);
+        formData.append('Photo', userPhoto);
+
+        axios.post(scriptURL, formData)
+            .then(response => alert('User details saved successfully'))
+            .catch(error => console.error('Error saving user details', error));
+    });
+</script>
+
+</body>
+</html>
