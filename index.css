@@ -56,7 +56,22 @@
     margin-top: 10px;
 }
 .button:hover{
-   zoom: 105%;
+    zoom: 105%;
+    cursor: pointer;
+}
+.update_details{
+    width :80%;
+    height: 37px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-style: none;
+    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.update_details:hover{
+    zoom: 105%;
     cursor: pointer;
 }
 #border{
