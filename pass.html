@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Password Reset</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="body">
+<center>
+<div id="border">
+    <h1 id="sign-in">Reset Password</h1>
+    <p id="errormessage" style="color: red;font-size: 20px"></p>
+    <input id="email" type="email" class="input-field1" placeholder="Enter Email to reset password"><br>
+    <button id="reset-button" class="button">Send Reset Link</button>
+</div>
+</center>
+
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+  import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+
+  const firebaseConfig = {
+
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  document.getElementById('reset-button').addEventListener('click', function() {
+    const emailAddress = document.getElementById('email').value;
+    sendPasswordResetEmail(auth, emailAddress)
+      .then(() => {
+        window.alert('Password reset link sent to your email.');
+      })
+      .catch((error) => {
+        document.getElementById('errormessage').innerHTML = "" + error.message;
+      });
+  });
+
+</script>
+
+</body>
+</html>
