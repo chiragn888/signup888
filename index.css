@@ -1,3 +1,4 @@
+```css
 #sign-in{
     text-align: center;
     font-size: 70px;
@@ -6,7 +7,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.input-field1{
+.input-field1, .input-field3{
     width :90%;
     height: 50px;
     padding-left: 20px;
@@ -19,10 +20,10 @@
     margin-bottom: 20px;
     font-size: 17px;
 }
-.input-field1::placeholder{
+.input-field1::placeholder, .input-field3::placeholder{
     color: white;
 }
-.input-field1:hover{
+.input-field1:hover, .input-field3:hover{
     zoom: 105%;
 }
 .input-field2{
@@ -161,3 +162,4 @@
 .back {
   transform: rotateY(180deg);
 }
+```
