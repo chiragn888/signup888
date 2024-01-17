@@ -8,7 +8,8 @@
 </head>
 <body>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <!-- The username will be displayed here dynamically after the user has signed in -->
+    <h1 id="userGreeting" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is landing page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
@@ -21,13 +22,10 @@
 
      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
+    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
   authDomain: "new-firebase-b4a29.firebaseapp.com",
   projectId: "new-firebase-b4a29",
   storageBucket: "new-firebase-b4a29.appspot.com",
@@ -40,6 +38,10 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
+
+  // Retrieve the stored username from local storage or the appropriate storage
+  const username = window.localStorage.getItem('username') || 'User';
+  document.getElementById('userGreeting').innerHTML = `Hi ${username}, this is landing page`;
 
    document.getElementById('logout').addEventListener('click',function (){
          signOut(auth).then(() => {
