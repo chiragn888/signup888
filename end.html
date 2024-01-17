@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <h1 id="welcome-message" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi, <span id="username">User</span>! This is the home page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
@@ -18,22 +18,18 @@
 
 <script type="module">
 
-
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
@@ -41,15 +37,25 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
-        }).catch((error) => {
-          console.log(error.message);
-        });
-    });
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const usernameDisplay = user.displayName || user.email; // Assumes displayName or email might be used as the username
+      document.getElementById('username').textContent = usernameDisplay;
+    } else {
+      // Redirect to sign-in page if user is not logged in
+      window.location.replace('index.html');
+    }
+  });
 
+  document.getElementById('logout').addEventListener('click', function () {
+    signOut(auth).then(() => {
+      window.alert('Logged out successfully!');
+      location.replace('index.html');
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  });
+  
 </script>
 </body>
 </html>
