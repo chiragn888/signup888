@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
@@ -17,14 +17,13 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
-    <input id="username" name="username" type="text" class="input-field1" placeholder="Username"><br>
-    <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
-    <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
+    <input id="lemail" type="email" class="input-field1" placeholder="Email"><br>
+    <input id="lpassword" type="password" class="input-field2" placeholder="Password"><br>
 
-    <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
+    <p><a href="#" id="fp" style="text-decoration: none">forgot password?</a></p>
     <button id="sign-in-button" class="button">Sign In</button>
     <button id="skip-login-button" class="button">Skip Login</button>
-    <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
+    <center><img id="google-button" class="gbutton" src="gbt.png"></center>
     <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
 
 
@@ -40,12 +39,13 @@
 <center>
 <div id="border1">
     <p id="errormessage1" style="color: red;font-size: 20px"></p>
-    <input id="lemail1"  type="email" class="input-field1" placeholder="Email"><br>
-    <input id="lpassword1"  type="password" class="input-field2" placeholder="Password" required><br>
-     <input id="confirm_password"  type="password" class="input-field2" placeholder=" Confirm Password" required><br>
+    <input id="username" type="text" class="input-field1" placeholder="Username" required><br> <!-- Added username input field -->
+    <input id="lemail1" type="email" class="input-field1" placeholder="Email" required><br>
+    <input id="lpassword1" type="password" class="input-field2" placeholder="Password" required><br>
+    <input id="confirm_password" type="password" class="input-field2" placeholder="Confirm Password" required><br>
     <br><button id="sign-up-button" class="button">Create Account</button>
-    <center><img id="google-button1" class="gbutton" src="gbt.png"  ></center>
-     <p><p  id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
+    <center><img id="google-button1" class="gbutton" src="gbt.png"></center>
+     <p><p id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
 
 </div>
 </center>
@@ -60,17 +60,17 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
   import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { GoogleAuthProvider, getAuth, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
@@ -78,14 +78,22 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-
-
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
 
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        // User is signed in, get the user's username
+        const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+          displayName: user.displayName // User's username
+        }).then(() => {
+          // Profile updated successfully
+        }).catch((error) => {
+          // An error occurred
+        });
+        
         window.location.replace('end.html');
       })
       .catch((error) => {
@@ -98,19 +106,26 @@
       window.location.replace('end.html');
     })
 
- document.getElementById('google-button').addEventListener('click',Googlelogin);
-document.getElementById('google-button1').addEventListener('click',Googlelogin);
+  document.getElementById('google-button').addEventListener('click',Googlelogin);
+  document.getElementById('google-button1').addEventListener('click',Googlelogin);
 
   let provider = new GoogleAuthProvider()
 
   function Googlelogin(){
       signInWithPopup(auth, provider)
       .then((result) => {
-
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-
+  
         const user = result.user;
+        updateProfile(auth.currentUser, {
+          displayName: user.displayName // User's username from Google Account
+        }).then(() => {
+          // Profile updated successfully
+        }).catch((error) => {
+          // An error occurred
+        });
+        
         window.location.replace('end.html')
 
       }).catch((error) => {
@@ -128,44 +143,38 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
   }
   AOS.init();
 
-  </script>
-<script src="index.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  document.getElementById('sign-up-button').addEventListener('click',function (ev){
+      var username = document.getElementById('username').value; // Get the username
+      var email = document.getElementById('lemail1').value;
+      var password = document.getElementById("lpassword1").value;
+      var confirm_pass = document.getElementById("confirm_password").value;
+      var err = document.getElementById("errormessage1");
 
-
-<script type="module">
-
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-const auth = getAuth();
-   document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
-       var email = document.getElementById('lemail1').value;
-       var password =document.getElementById("lpassword1").value;
-   var confirm_pass =document.getElementById("confirm_password").value;
-   var err=document.getElementById("errormessage1");
-
-   if(password!== confirm_pass) {
-       err.innerHTML = "Passwords do not match!";
-   }
-   else {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            window.location.replace("end.html");
-
-          })
-          .catch((error) => {
-            err.innerHTML=""+error.message
-          });
-
-   }
-
-
-   })
+      if(password !== confirm_pass) {
+          err.innerHTML = "Passwords do not match!";
+      }
+      else {
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Update the user's profile with the username
+              updateProfile(auth.currentUser, {
+                displayName: username
+              }).then(() => {
+                // Profile updated successfully
+                window.location.replace("end.html");
+              }).catch((error) => {
+                // An error occurred
+                err.innerHTML = "" + error.message;
+              });
+            })
+            .catch((error) => {
+              err.innerHTML = "" + error.message;
+            });
+      }
+  });
 
 </script>
-
-
-
+<script src="index.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 </body>
-
 </html>
