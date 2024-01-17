@@ -9,7 +9,7 @@
 <body class="body">
 <center>
 <div class="flip-container" onclick="this.classList.toggle('hover');">
-  <div class="flipper">
+  <div>
     <div class="front">
   <div id="part1" >
 
@@ -17,6 +17,7 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
+    <input id="username" type="text" class="input-field1" placeholder="Username"><br>
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
 
@@ -76,14 +77,20 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-
+  let usernameStorage = {}; // Object to store the usernames
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
+      var username = document.getElementById('username').value;
       var email= document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
+      
+      // Store username in the usernameStorage object using email as a key
+      usernameStorage[email] = username;
 
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        // Pass username to the next window via local storage or handle appropriately
+        // Example: window.localStorage.setItem('username', usernameStorage[email]);
         window.location.replace('end.html');
       })
       .catch((error) => {
@@ -105,6 +112,7 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
         const token = credential.accessToken;
         
         const user = result.user;
+        // Consider storing the username here as well if signing in through Google
         window.location.replace('end.html')
       
       }).catch((error) => {
