@@ -17,6 +17,7 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
+    <input id="username" type="text" class="input-field1" placeholder="User Name"><br>
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
 
@@ -59,7 +60,7 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
   import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
   import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { getAuth, signInWithPopup, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
@@ -76,20 +77,25 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-
-
   document.getElementById('sign-in-button').addEventListener('click',function (){
-      var email= document.getElementById('lemail').value;
+      var username = document.getElementById('username').value;
+      var email = document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
 
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        window.location.replace('end.html');
+        // Set session persistence
+        setPersistence(auth, browserSessionPersistence)
+          .then(() => {
+            // Store username in session storage
+            sessionStorage.setItem('username', username);
+            // Redirect to home page
+            window.location.replace('home.html');
+          });
       })
       .catch((error) => {
           document.getElementById('errormessage').innerHTML=""+error.message;
       });
-
   })
 
  document.getElementById('google-button').addEventListener('click',Googlelogin);
@@ -103,18 +109,21 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
         
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        
         const user = result.user;
-        window.location.replace('end.html')
+        
+        // Store username in session storage
+        sessionStorage.setItem('username', user.displayName);
+        
+        // Redirect to home page
+        window.location.replace('home.html')
       
       }).catch((error) => {
         
         const errorCode = error.code;
         const errorMessage = error.message;
-        
         const email = error.email;
-       
         const credential = GoogleAuthProvider.credentialFromError(error);
+        
         document.getElementById('errormessage').innerHTML=""+error.message;
        
       });
