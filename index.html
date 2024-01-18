@@ -9,7 +9,7 @@
 <body class="body">
 <center>
 <div>
-  <div >
+  <div>
     <div class="front">
   <div id="part1" >
 
@@ -20,9 +20,9 @@
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
 
-    <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
+    <p><a href="forgot_password.html" id="fp" style="text-decoration: none">Forgot password?</a></p>
     <button id="sign-in-button" class="button">Sign In</button>
-    <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
+    <center><img id="google-button" class="gbutton" src="gbt.png"></center>
     <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
 
 
@@ -40,9 +40,9 @@
     <p id="errormessage1" style="color: red;font-size: 20px"></p>
     <input id="lemail1"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword1"  type="password" class="input-field2" placeholder="Password" required><br>
-     <input id="confirm_password"  type="password" class="input-field2" placeholder=" Confirm Password" required><br>
+     <input id="confirm_password"  type="password" class="input-field2" placeholder="Confirm Password" required><br>
     <br><button id="sign-up-button" class="button">Create Account</button>
-    <center><img id="google-button1" class="gbutton" src="gbt.png"  ></center>
+    <center><img id="google-button1" class="gbutton" src="gbt.png"></center>
      <p><p  id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
 
 </div>
@@ -132,7 +132,7 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
 import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 const auth = getAuth();
    document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
+       ev.preventDefault()
        var email = document.getElementById('lemail1').value;
        var password =document.getElementById("lpassword1").value;
    var confirm_pass =document.getElementById("confirm_password").value;
