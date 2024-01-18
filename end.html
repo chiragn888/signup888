@@ -13,6 +13,7 @@
     <div id="border">
         <br><br>
     <button id="logout" class="button">sign out</button>
+    <button id="surprise" class="button">Surprise</button>
     </div>
 </center>
 
@@ -27,7 +28,7 @@
   import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
+    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
   authDomain: "new-firebase-b4a29.firebaseapp.com",
   projectId: "new-firebase-b4a29",
   storageBucket: "new-firebase-b4a29.appspot.com",
@@ -49,6 +50,10 @@
           console.log(error.message);
         });
     });
+    
+    document.getElementById('surprise').addEventListener('click', function() {
+        location.replace('image.html');
+    });  
 
 </script>
 </body>
