@@ -8,42 +8,47 @@
 </head>
 <body>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <h1 id="welcomeText" style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">sign out</button>
     </div>
 </center>
 
 <script type="module">
 
-
      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+     import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+     import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+     import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+     import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
+     const firebaseConfig = {
+       apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+       authDomain: "new-firebase-b4a29.firebaseapp.com",
+       projectId: "new-firebase-b4a29",
+       storageBucket: "new-firebase-b4a29.appspot.com",
+       messagingSenderId: "318345862940",
+       appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+       measurementId: "G-F7GMN64KLE"
+     };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
+     // Initialize Firebase
+     const app = initializeApp(firebaseConfig);
+     const analytics = getAnalytics(app);
+     const auth = getAuth(app);
 
-   document.getElementById('logout').addEventListener('click',function (){
+    // Display the username
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const username = window.sessionStorage.getItem('username') || 'User';
+        document.getElementById('welcomeText').innerText = `Hi ${username}, welcome to the home page.`;
+    });
+
+    document.getElementById('logout').addEventListener('click', function (){
          signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
+          window.alert('Logged out successfully!');
           location.replace('index.html')
         }).catch((error) => {
           console.log(error.message);
