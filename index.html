@@ -9,7 +9,7 @@
 <body class="body">
 <center>
 <div>
-  <div >
+  <div>
     <div class="front">
   <div id="part1" >
 
@@ -17,6 +17,7 @@
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
+    <input id="usr_name"  type="text" class="input-field1" placeholder="Username"><br>
     <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
     <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
 
@@ -79,11 +80,14 @@
 
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
+      var username= document.getElementById('usr_name').value;
       var email= document.getElementById('lemail').value;
       var password = document.getElementById('lpassword').value;
 
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        // Assuming the username needs to be passed to the landing page, you would store it or handle it here.
+        window.sessionStorage.setItem('username', username); // This is a simplistic example, adjust accordingly.
         window.location.replace('end.html');
       })
       .catch((error) => {
@@ -105,6 +109,8 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
         const token = credential.accessToken;
         
         const user = result.user;
+        // Assuming the username is available in 'user' object, which can differ by auth providers.
+        window.sessionStorage.setItem('username', user.displayName || 'Username'); // Adjust according to actual key available.
         window.location.replace('end.html')
       
       }).catch((error) => {
