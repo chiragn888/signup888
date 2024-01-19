@@ -161,3 +161,22 @@
 .back {
   transform: rotateY(180deg);
 }
+
+/* New CSS styles for the 'surprise' button */
+#surprise {
+    width :80%;
+    height: 37px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-style: none;
+    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#surprise:hover {
+    zoom: 105%;
+    cursor: pointer;
+}
+/* End of new CSS styles for the 'surprise' button */
