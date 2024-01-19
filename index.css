@@ -74,6 +74,8 @@
 }
 #fp:hover{
     color: dodgerblue;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .fp1{
     color: white;
