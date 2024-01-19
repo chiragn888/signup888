@@ -1,18 +1,18 @@
 #sign-in{
     text-align: center;
     font-size: 70px;
-    font-weight:800;
+    font-weight: 800;
     color: white;
     margin-top: 100px;
     margin-bottom: 100px;
 }
 .input-field1{
-    width :90%;
+    width: 90%;
     height: 50px;
     padding-left: 20px;
     border-radius: 8px;
     border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border-color: #ffffff;
     color: white;
     border-width: 1px;
@@ -23,15 +23,15 @@
     color: white;
 }
 .input-field1:hover{
-    zoom: 105%;
+    transform: scale(1.05);
 }
 .input-field2{
-    width :90%;
+    width: 90%;
     height: 50px;
     padding-left: 20px;
     border-radius: 8px;
     border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     border-color: #ffffff;
     color: white;
     border-width: 1px;
@@ -42,10 +42,10 @@
     color: white;
 }
 .input-field2:hover{
-    zoom: 105%;
+    transform: scale(1.05);
 }
 .button{
-    width :80%;
+    width: 80%;
     height: 37px;
     border-radius: 4px;
     font-size: 16px;
@@ -56,15 +56,22 @@
     margin-top: 10px;
 }
 .button:hover{
-    zoom: 105%;
+    transform: scale(1.05);
     cursor: pointer;
 }
-#border{
+#border,
+#border1{
     height: 500px;
     width: 400px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-#fp{
+#fp, .fp1{
     color: white;
     font-size: 15px;
     font-family: ".AppleSystemUIFont";
@@ -72,23 +79,12 @@
     margin-bottom: 10px;
     margin-top: 20px;
 }
-#fp:hover{
-    color: #3c96f5;
-}
-.fp1{
-    color: white;
-    font-size: 12px;
-    font-family: ".AppleSystemUIFont";
-    text-decoration: none;
-    margin-bottom: 10px;
-    margin-top: 35px;
-}
-.fp1:hover{
+#fp:hover, .fp1:hover{
     color: dodgerblue;
     cursor: pointer;
 }
 ::-webkit-scrollbar{
-    overflow: hidden ;
+    display: none;
 }
 .body{
     background-color: #050505;
@@ -105,29 +101,22 @@
     background-color: white;
 }
 .gbutton:hover{
-    zoom: 105%;
+    transform: scale(1.05);
     cursor: pointer;
 }
 
 #sign-up{
     text-align: center;
     font-size: 70px;
-    font-weight:800;
+    font-weight: 800;
     color: white;
     margin-top: 100px;
     margin-bottom: 100px;
 }
-#border1{
-    height: 500px;
-    width: 400px;
-}
-#part1{
+#part1, #part2{
     display: block;
     background-color: black;
-}
-#part2{
-    display: block;
-    background-color: black;
+    border-radius: 15px;
 }
 
 .flip-container {
@@ -160,4 +149,33 @@
 }
 .back {
   transform: rotateY(180deg);
+  background-color: black; /* Ensure that the backside isn't transparent */
+}
+.modal-content {
+    border-radius: 8px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #222;
+}
+.header .company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    align-items: center;
+    justify-content: center;
 }
