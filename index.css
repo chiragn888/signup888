@@ -1,3 +1,11 @@
+body {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), black);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 #sign-in{
     text-align: center;
     font-size: 70px;
@@ -56,7 +64,7 @@
     margin-top: 10px;
 }
 .button:hover{
-    zoom: 105%;
+   zoom: 105%;
     cursor: pointer;
 }
 #border{
@@ -73,7 +81,7 @@
     margin-top: 20px;
 }
 #fp:hover{
-    color: #3c96f5;
+    color: dodgerblue;
 }
 .fp1{
     color: white;
