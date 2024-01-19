@@ -4,52 +4,115 @@
 <head>
     <title>home page</title>
     <link rel="stylesheet" href="index.css">
-    <link href="index.html">
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background-color: #333;
+        }
+        .header .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+    </style>
 </head>
 <body>
+
+<div class="header">
+    <div class="company-name">Chirag</div>
+    <button id="get-started" class="button">Get Started</button>
+</div>
+
 <center>
     <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">sign out</button>
     </div>
 </center>
 
+<div id="signInUpModal" class="modal">
+    <div class="modal-content">
+        <!-- Sign-in/Sign-up forms can be included here -->
+    </div>
+</div>
+
 <script type="module">
 
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+    import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+        authDomain: "new-firebase-b4a29.firebaseapp.com",
+        projectId: "new-firebase-b4a29",
+        storageBucket: "new-firebase-b4a29.appspot.com",
+        messagingSenderId: "318345862940",
+        appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+        measurementId: "G-F7GMN64KLE"
+    };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
+    document.getElementById('logout').addEventListener('click', function () {
+        signOut(auth).then(() => {
+            window.alert('Logged out successfully!');
+            location.replace('index.html')
         }).catch((error) => {
-          console.log(error.message);
+            console.log(error.message);
         });
     });
 
+    document.getElementById('get-started').addEventListener('click', function() {
+        document.getElementById('signInUpModal').style.display = 'block';
+    });
+
+    // Clicking anywhere outside of the modal will close it
+    window.onclick = function(event) {
+        let modal = document.getElementById('signInUpModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+    
 </script>
 </body>
 </html>
