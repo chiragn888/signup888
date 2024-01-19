@@ -1,55 +1,62 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>home page</title>
+    <title>Chirag - Get Started</title>
     <link rel="stylesheet" href="index.css">
-    <link href="index.html">
 </head>
-<body>
+<body style="background-image: url('https://example.com/background.gif');">
+<header>
+    <h1>Chirag</h1>
+    <button id="get-started-btn" class="button">Get Started</button>
+</header>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
-    <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
+    <svg width="100" height="100">
+        <!-- Insert SVG content here -->
+        <!-- This is a placeholder for SVG elements, provide actual SVG here -->
+    </svg>
+    <div id="modal" class="modal">
+        <!-- Your sign-in/sign-up content goes here -->
+    </div>
     <div id="border">
-        <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">Sign Out</button>
     </div>
 </center>
 
 <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+    import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+        authDomain: "new-firebase-b4a29.firebaseapp.com",
+        projectId: "new-firebase-b4a29",
+        storageBucket: "new-firebase-b4a29.appspot.com",
+        messagingSenderId: "318345862940",
+        appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+        measurementId: "G-F7GMN64KLE"
+    };
 
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
+    document.getElementById('logout').addEventListener('click', function() {
+        signOut(auth).then(() => {
+            window.alert('Logged out successfully!');
+            location.replace('index.html');
         }).catch((error) => {
-          console.log(error.message);
+            console.log(error.message);
         });
     });
 
+    // Get started button click event listener
+    document.getElementById('get-started-btn').addEventListener('click', function() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+    });
 </script>
 </body>
 </html>
