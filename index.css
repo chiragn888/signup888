@@ -25,6 +25,28 @@
 .input-field1:hover{
     zoom: 105%;
 }
+
+/* Styling for usr_name input field to match other input fields */
+#usr_name {
+    width :90%;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 8px;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #ffffff;
+    color: white;
+    border-width: 1px;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+#usr_name::placeholder{
+    color: white;
+}
+#usr_name:hover{
+    zoom: 105%;
+}
+
 .input-field2{
     width :90%;
     height: 50px;
