@@ -68,12 +68,18 @@
     color: white;
     font-size: 15px;
     font-family: ".AppleSystemUIFont";
-    text-decoration: none;
+    text-decoration: underline;
     margin-bottom: 10px;
     margin-top: 20px;
+    background-color: #23395d; /* Changed */
+    padding: 8px 12px;        /* Changed */
+    border-radius: 4px;       /* Changed */
+    display: inline-block;    /* Changed */
+    transition: background-color 0.3s; /* Changed */
 }
 #fp:hover{
-    color: dodgerblue;
+    background-color: #3c96f5; /* Changed */
+    text-decoration: none;    /* Changed */
 }
 .fp1{
     color: white;
