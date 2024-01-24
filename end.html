@@ -3,53 +3,131 @@
 <html>
 <head>
     <title>home page</title>
+    <style>
+        body{
+            background-color: #050505;
+            color: white;
+        }
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background: #333;
+        }
+        #header .company-name {
+            font-size: 40px;
+            font-family: 'Arial';
+            color: #fff;
+            margin: 0;
+        }
+        .get-started-btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .universe-svg {
+            display: block;
+            margin: auto;
+            background-image: url('your_image.svg');
+            height: 300px; /* adjust as necessary */
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        #logout {
+            background-color: #f44336;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            color: white;
+        }
+    </style>
     <link rel="stylesheet" href="index.css">
     <link href="index.html">
 </head>
 <body>
-<center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
-    <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
-    <div id="border">
-        <br><br>
-    <button id="logout" class="button">sign out</button>
+    <div id="header">
+        <h1 class="company-name">Chirag</h1>
+        <button class="get-started-btn" onclick="document.getElementById('signInModal').style.display='block'">Get Started</button>
     </div>
-</center>
+    
+    <div class="universe-svg">
+        <!-- Universe SVG graphic here -->
+    </div>
 
-<script type="module">
+    <center>
+        <div id="border">
+            <br><br>
+            <button id="logout" class="button">sign out</button>
+        </div>
+    </center>
 
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('signInModal').style.display='none'">&times;</span>
+            <!-- Sign-in/Sign-up forms go here -->
+        </div>
+    </div>
 
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+        import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+        import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+        import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+            authDomain: "new-firebase-b4a29.firebaseapp.com",
+            projectId: "new-firebase-b4a29",
+            storageBucket: "new-firebase-b4a29.appspot.com",
+            messagingSenderId: "318345862940",
+            appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+            measurementId: "G-F7GMN64KLE"
+        };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
-        }).catch((error) => {
-          console.log(error.message);
+        document.getElementById('logout').addEventListener('click',function (){
+            signOut(auth).then(() => {
+                window.alert('Logged out successfully!');
+                location.replace('index.html')
+            }).catch((error) => {
+                console.log(error.message);
+            });
         });
-    });
-
-</script>
+    </script>
 </body>
 </html>
