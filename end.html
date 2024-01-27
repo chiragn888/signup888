@@ -8,7 +8,7 @@
 </head>
 <body>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is the home page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
@@ -18,38 +18,61 @@
 
 <script type="module">
 
-
      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
+     const firebaseConfig = {
+       apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
+       authDomain: "new-firebase-b4a29.firebaseapp.com",
+       projectId: "new-firebase-b4a29",
+       storageBucket: "new-firebase-b4a29.appspot.com",
+       messagingSenderId: "318345862940",
+       appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+       measurementId: "G-F7GMN64KLE"
+     };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
+     // Initialize Firebase
+     const app = initializeApp(firebaseConfig);
+     const analytics = getAnalytics(app);
+     const auth = getAuth(app);
 
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
-        }).catch((error) => {
-          console.log(error.message);
-        });
-    });
+     document.getElementById('logout').addEventListener('click',function (){
+       signOut(auth).then(() => {
+         window.alert('Logged out successfully!');
+         location.replace('index.html')
+       }).catch((error) => {
+         console.log(error.message);
+       });
+     });
 
 </script>
 </body>
 </html>
+<!-- README section starts here -->
+<!-- README -->
+## Setup Steps
+To integrate and work with this application, follow the steps below:
+
+1. **Pre-requisites:**
+   - A text editor or IDE (Integrated Development Environment) of your choice (e.g., VSCode, Sublime Text).
+   - Basic knowledge of HTML, CSS, and JavaScript.
+
+2. **Libraries to Install:**
+   No additional libraries are needed besides those already included through CDN (Content Delivery Network) in the HTML files.
+
+3. **Firebase Configuration:**
+   - Go to the [Firebase Console](https://console.firebase.google.com/).
+   - Create a new project.
+   - Click on 'Add app' and select the appropriate platform (web).
+   - Copy the Firebase configuration object provided and replace the placeholder object in the JavaScript code with your project's config object.
+
+4. **Guidelines for Modifying JavaScript Functions:**
+   - To add a new feature, write a new function in a `<script>` tag or a separate `.js` file.
+   - Use meaningful names for functions and variables to improve readability.
+   - Add event listeners for interactive elements.
+   - To modify an existing function, ensure you understand its current behavior before making changes.
+
+Remember to thoroughly test your changes for functionality and handle any errors that may occur.
+
+<!-- README section ends here -->
