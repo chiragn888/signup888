@@ -7,8 +7,9 @@
       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
-<center>
-<div>
+<button id="get-started-button" class="button">Get Started</button>
+<div id="auth-modal" style="display:none;">
+  <center>
   <div>
     <div class="front">
   <div id="part1" >
@@ -50,6 +51,7 @@
 </div>
 </div>
   </div>
+</div>
 </div>
 </center>
 
@@ -168,3 +170,7 @@ const auth = getAuth();
 </body>
 
 </html>
+document.getElementById('get-started-button').addEventListener('click', function() {
+  var modal = document.getElementById('auth-modal');
+  modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+});
