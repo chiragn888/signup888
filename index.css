@@ -50,13 +50,15 @@
     border-radius: 4px;
     font-size: 16px;
     border-style: none;
-    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
-    color: white;
-    margin-bottom: 15px;
-    margin-top: 10px;
+    background-color: #0d1137; /* Dark blue to match the universe theme */
+    color: #ffffff;
+    border: 2px solid #ffffff; /* White border */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
 }
 .button:hover{
-    zoom: 105%;
+    background-color: #ffffff; /* White background on hover */
+    color: #0d1137; /* Dark blue text on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
     cursor: pointer;
 }
 #border{
@@ -124,6 +126,39 @@
 #part1{
     display: block;
     background-color: black;
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #050505; /* Dark background for the header */
+    color: white;
+}
+
+/* Modal styles */
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: #0d1137; /* Dark blue background for the modal */
+    border: 2px solid #ffffff; /* White border */
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    display: none; /* Hidden by default */
+    z-index: 10; /* Ensure it's above other content */
+    transition: opacity 0.3s, transform 0.3s; /* Smooth transition for showing/hiding */
+}
+
+/* Enhancements to the main content area for the universe theme */
+.main {
+    background-color: #050505; /* Dark background for the main content */
+    color: white; /* White text for contrast */
+    padding: 20px;
+}
 }
 #part2{
     display: block;
