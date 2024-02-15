@@ -1,0 +1,24 @@
+<!-- This SVG depicts a stylized universe theme with planets, stars, and galaxies on a dark background. -->
+<svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .star { fill: white; }
+    .planet { fill: radial-gradient(circle, #9bb0ff 0%, #002366 100%); }
+    .galaxy { fill: url(#GalaxyGradient); }
+  </style>
+  <defs>
+    <radialGradient id="GalaxyGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#002233;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="black" />
+  <!-- Stars -->
+  <circle cx="100" cy="50" r="1" class="star" />
+  <circle cx="150" cy="100" r="1" class="star" />
+  <circle cx="200" cy="150" r="1" class="star" />
+  <!-- Planets -->
+  <circle cx="400" cy="300" r="50" class="planet" />
+  <!-- Galaxy -->
+  <ellipse cx="600" cy="400" rx="100" ry="50" class="galaxy" />
+</svg>
