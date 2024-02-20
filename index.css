@@ -56,7 +56,7 @@
     margin-top: 10px;
 }
 .button:hover{
-    zoom: 105%;
+   zoom: 105%;
     cursor: pointer;
 }
 #border{
@@ -73,7 +73,7 @@
     margin-top: 20px;
 }
 #fp:hover{
-    color: #3c96f5;
+    color: dodgerblue;
 }
 .fp1{
     color: white;
@@ -160,4 +160,57 @@
 }
 .back {
   transform: rotateY(180deg);
+}
+
+/* Styles for CSV to JSON conversion feature */
+#csv-to-json {
+    margin: 2em 0;
+}
+
+#csvText {
+    width: 80%;
+    min-height: 100px;
+    padding: 1em;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 16px;
+    margin-bottom: 1em;
+    resize: vertical;
+}
+
+#csvText::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#jsonResult {
+    width: 80%;
+    min-height: 100px;
+    padding: 1em;
+    border-radius: 8px;
+    background-color: #333;
+    border: 1px solid #ffffff;
+    color: white;
+    overflow: auto;
+    margin-top: 1em;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#convertToJson {
+    width: 80%;
+    height: 37px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-style: none;
+    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+    color: white;
+    margin-bottom: 1em;
+}
+
+#convertToJson:hover {
+    zoom: 105%;
+    cursor: pointer;
 }
