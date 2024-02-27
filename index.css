@@ -6,7 +6,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-.input-field1{
+.input-field1, .input-field2, .csv-json-converter textarea{
     width :90%;
     height: 50px;
     padding-left: 20px;
@@ -19,32 +19,13 @@
     margin-bottom: 20px;
     font-size: 17px;
 }
-.input-field1::placeholder{
+.input-field1::placeholder, .input-field2::placeholder, .csv-json-converter textarea::placeholder{
     color: white;
 }
-.input-field1:hover{
+.input-field1:hover, .input-field2:hover, .csv-json-converter textarea:hover{
     zoom: 105%;
 }
-.input-field2{
-    width :90%;
-    height: 50px;
-    padding-left: 20px;
-    border-radius: 8px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    color: white;
-    border-width: 1px;
-    margin-bottom: 15px;
-    font-size: 17px;
-}
-.input-field2::placeholder{
-    color: white;
-}
-.input-field2:hover{
-    zoom: 105%;
-}
-.button{
+.button, .csv-json-converter button{
     width :80%;
     height: 37px;
     border-radius: 4px;
@@ -52,18 +33,17 @@
     border-style: none;
     background-image: linear-gradient(to right, #7f55ad, #3c96f5);
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
-.button:hover{
+.button:hover, .csv-json-converter button:hover{
    zoom: 105%;
     cursor: pointer;
 }
-#border{
+#border, #border1{
     height: 500px;
     width: 400px;
 }
-
 #fp{
     color: white;
     font-size: 15px;
@@ -72,7 +52,7 @@
     margin-bottom: 10px;
     margin-top: 20px;
 }
-#fp:hover{
+#fp:hover, .fp1:hover{
     color: dodgerblue;
 }
 .fp1{
@@ -108,7 +88,6 @@
     zoom: 105%;
     cursor: pointer;
 }
-
 #sign-up{
     text-align: center;
     font-size: 70px;
@@ -117,19 +96,10 @@
     margin-top: 100px;
     margin-bottom: 100px;
 }
-#border1{
-    height: 500px;
-    width: 400px;
-}
-#part1{
+#part1, #part2{
     display: block;
     background-color: black;
 }
-#part2{
-    display: block;
-    background-color: black;
-}
-
 .flip-container {
   perspective: 1000px;
 }
@@ -160,4 +130,30 @@
 }
 .back {
   transform: rotateY(180deg);
+}
+/* CSV to JSON Converter Styles */
+.csv-json-converter {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.csv-json-converter h2,
+.csv-json-converter h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.csv-json-converter pre {
+  width: 90%;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  font-size: 15px;
 }
