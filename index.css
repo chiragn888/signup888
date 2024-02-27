@@ -1,3 +1,4 @@
+Combined code:css
 #sign-in{
     text-align: center;
     font-size: 70px;
@@ -56,7 +57,7 @@
     margin-top: 10px;
 }
 .button:hover{
-    zoom: 105%;
+   zoom: 105%;
     cursor: pointer;
 }
 #border{
@@ -73,7 +74,7 @@
     margin-top: 20px;
 }
 #fp:hover{
-    color: #3c96f5;
+    color: dodgerblue;
 }
 .fp1{
     color: white;
@@ -160,4 +161,49 @@
 }
 .back {
   transform: rotateY(180deg);
+}
+
+/* CSV to JSON Converter Section Styles */
+.csv-json-converter {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.csv-json-textarea {
+  width: 90%;
+  height: 100px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.csv-json-textarea::placeholder {
+  color: #bbb;
+}
+
+.convert-button {
+  width: 200px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  border-style: none;
+  background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+  color: white;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.convert-button:hover {
+  transform: scale(1.05);
 }
