@@ -56,7 +56,7 @@
     margin-top: 10px;
 }
 .button:hover{
-    zoom: 105%;
+   zoom: 105%;
     cursor: pointer;
 }
 #border{
@@ -73,7 +73,7 @@
     margin-top: 20px;
 }
 #fp:hover{
-    color: #3c96f5;
+    color: dodgerblue;
 }
 .fp1{
     color: white;
