@@ -2,7 +2,7 @@
     text-align: center;
     font-size: 70px;
     font-weight:800;
-    color: white;
+    color: grey; /* Changed from white to grey */
     margin-top: 100px;
     margin-bottom: 100px;
 }
