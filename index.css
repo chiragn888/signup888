@@ -91,7 +91,7 @@
     overflow: hidden ;
 }
 .body{
-    background-color: #050505;
+    background-color: yellow; /* Changed the background color to yellow */
     height: max-content;
     top: 0;
     margin-top: 0;
