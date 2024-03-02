@@ -4,7 +4,7 @@
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -57,26 +57,22 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
-
-
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
@@ -90,12 +86,12 @@
           document.getElementById('errormessage').innerHTML=""+error.message;
       });
 
-  })
+  });
 
- document.getElementById('google-button').addEventListener('click',Googlelogin);
-document.getElementById('google-button1').addEventListener('click',Googlelogin);
+  document.getElementById('google-button').addEventListener('click',Googlelogin);
+  document.getElementById('google-button1').addEventListener('click',Googlelogin);
 
-  let provider = new GoogleAuthProvider()
+  let provider = new GoogleAuthProvider();
 
   function Googlelogin(){
       signInWithPopup(auth, provider)
@@ -105,7 +101,7 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
         const token = credential.accessToken;
         
         const user = result.user;
-        window.location.replace('end.html')
+        window.location.replace('end.html');
       
       }).catch((error) => {
         
@@ -120,46 +116,32 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
       });
 
   }
+
   AOS.init();
 
-  </script>
+  document.getElementById('sign-up-button').addEventListener('click',function (ev){
+       ev.preventDefault;
+       var email = document.getElementById('lemail1').value;
+       var password = document.getElementById("lpassword1").value;
+       var confirm_pass = document.getElementById("confirm_password").value;
+       var err = document.getElementById("errormessage1");
+
+       if(password !== confirm_pass) {
+           err.innerHTML = "Passwords do not match!";
+       } else {
+            createUserWithEmailAndPassword(auth, email, password)
+              .then((userCredential) => {
+                window.location.replace("end.html");
+              })
+              .catch((error) => {
+                err.innerHTML=""+error.message;
+              });
+       }
+   });
+
+</script>
 <script src="index.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-
-<script type="module">
-
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-const auth = getAuth();
-   document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
-       var email = document.getElementById('lemail1').value;
-       var password =document.getElementById("lpassword1").value;
-   var confirm_pass =document.getElementById("confirm_password").value;
-   var err=document.getElementById("errormessage1");
-
-   if(password!== confirm_pass) {
-       err.innerHTML = "Passwords do not match!";
-   }
-   else {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            window.location.replace("end.html");
-
-          })
-          .catch((error) => {
-            err.innerHTML=""+error.message
-          });
-
-   }
-
-
-   })
-
-</script>
-
-
-
 </body>
-
 </html>
