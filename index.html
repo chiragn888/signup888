@@ -3,93 +3,73 @@ html
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Chirag</title>
+    <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <style>
-        body {
-            background-color: #000;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-        .header h1 {
-            color: #fff;
-            font-size: 2em;
-        }
-        .button {
-            background-color: #fff;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #ccc;
-        }
-    </style>
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
-<div class="header">
-    <h1>Chirag</h1>
-    <button id="get-started-button" class="button">Get Started</button>
+<center>
+<div>
+  <div >
+    <div class="front">
+  <div id="part1" >
+
+<center><h1 id="sign-in">Sign In</h1></center>
+<center>
+<div id="border">
+    <p id="errormessage" style="color: red;font-size: 20px"></p>
+    <input id="lemail"  type="email" class="input-field1" placeholder="Email"><br>
+    <input id="lpassword"  type="password" class="input-field2" placeholder="Password"><br>
+
+    <p><a href="#" id="fp"  style="text-decoration: none">forgot password?</a></p>
+    <button id="sign-in-button" class="button">Sign In</button>
+    <center><img id="google-button" class="gbutton" src="gbt.png"  ></center>
+    <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
+
+
 </div>
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    <svg width="100" height="100">
-        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-    </svg>
-    <h1>Welcome to the Universe</h1>
-    <p>This is a dynamic and kickass landing page with creatives (SVG) and a dark background depicting the universe.</p>
+</center>
 </div>
-<!-- Modal for signin/signup -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div id="part1" class="active">
-            <h1 id="sign-in">Sign In</h1>
-            <div id="border">
-                <p id="errormessage" style="color: red;font-size: 20px"></p>
-                <input id="lemail" type="email" class="input-field1" placeholder="Email"><br>
-                <input id="lpassword" type="password" class="input-field2" placeholder="Password"><br>
-                <p><a href="#" id="fp" style="text-decoration: none">forgot password?</a></p>
-                <button id="sign-in-button" class="button">Sign In</button>
-                <center><img id="google-button" class="gbutton" src="gbt.png"></center>
-                <p><p id="transmit" class="fp1" style="text-decoration: none">New User? Sign Up</p></p>
-            </div>
-        </div>
-        <div id="part2" class="inactive">
-            <h1 id="sign-up">Sign Up</h1>
-            <div id="border1">
-                <p id="errormessage1" style="color: red;font-size: 20px"></p>
-                <input id="lemail1" type="email" class="input-field1" placeholder="Email"><br>
-                <input id="lpassword1" type="password" class="input-field2" placeholder="Password" required><br>
-                <input id="confirm_password" type="password" class="input-field2" placeholder="Confirm Password" required><br>
-                <br><button id="sign-up-button" class="button">Create Account</button>
-                <center><img id="google-button1" class="gbutton" src="gbt.png"></center>
-                <p><p id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
-            </div>
-        </div>
+
     </div>
+    <div class="back">
+  <div id="part2" >
+
+<h1 id="sign-up">Sign Up</h1>
+<center>
+<div id="border1">
+    <p id="errormessage1" style="color: red;font-size: 20px"></p>
+    <input id="lemail1"  type="email" class="input-field1" placeholder="Email"><br>
+    <input id="lpassword1"  type="password" class="input-field2" placeholder="Password" required><br>
+     <input id="confirm_password"  type="password" class="input-field2" placeholder=" Confirm Password" required><br>
+    <br><button id="sign-up-button" class="button">Create Account</button>
+    <center><img id="google-button1" class="gbutton" src="gbt.png"  ></center>
+     <p><p  id="transmit1" class="fp1" style="text-decoration: none">Existing User? Sign In</p></p>
+
 </div>
+</center>
+</div>
+</div>
+  </div>
+</div>
+</center>
 
 <script type="module">
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
   import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider, getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-    authDomain: "new-firebase-b4a29.firebaseapp.com",
-    projectId: "new-firebase-b4a29",
-    storageBucket: "new-firebase-b4a29.appspot.com",
-    messagingSenderId: "318345862940",
-    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-    measurementId: "G-F7GMN64KLE"
+  authDomain: "new-firebase-b4a29.firebaseapp.com",
+  projectId: "new-firebase-b4a29",
+  storageBucket: "new-firebase-b4a29.appspot.com",
+  messagingSenderId: "318345862940",
+  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+  measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
@@ -97,20 +77,90 @@ html
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-  document.getElementById('get-started-button').addEventListener('click', function() {
-    document.getElementById('modal').style.display = "block";
-  });
 
-  // ... existing code ...
 
-</script>
+  document.getElementById('sign-in-button').addEventListener('click',function (){
+      var email= document.getElementById('lemail').value;
+      var password = document.getElementById('lpassword').value;
 
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        window.location.replace('end.html');
+      })
+      .catch((error) => {
+          document.getElementById('errormessage').innerHTML=""+error.message;
+      });
+
+  })
+
+ document.getElementById('google-button').addEventListener('click',Googlelogin);
+document.getElementById('google-button1').addEventListener('click',Googlelogin);
+
+  let provider = new GoogleAuthProvider()
+
+  function Googlelogin(){
+      signInWithPopup(auth, provider)
+      .then((result) => {
+        
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        
+        const user = result.user;
+        window.location.replace('end.html')
+      
+      }).catch((error) => {
+        
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        
+        const email = error.email;
+       
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        document.getElementById('errormessage').innerHTML=""+error.message;
+       
+      });
+
+  }
+  AOS.init();
+
+  </script>
 <script src="index.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
+
 <script type="module">
-    // ... existing code ...
+
+import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+const auth = getAuth();
+   document.getElementById('sign-up-button').addEventListener('click',function (ev){
+       ev.preventDefault
+       var email = document.getElementById('lemail1').value;
+       var password =document.getElementById("lpassword1").value;
+   var confirm_pass =document.getElementById("confirm_password").value;
+   var err=document.getElementById("errormessage1");
+
+   if(password!== confirm_pass) {
+       err.innerHTML = "Passwords do not match!";
+   }
+   else {
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            window.location.replace("end.html");
+
+          })
+          .catch((error) => {
+            err.innerHTML=""+error.message
+          });
+
+   }
+
+
+   })
+
 </script>
 
+
+
 </body>
+
 </html>
