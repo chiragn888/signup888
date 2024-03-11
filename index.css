@@ -34,6 +34,9 @@
     background-color: rgba(0, 0, 0, 0);
     border-color: #ffffff;
     color: white;
+#main-title{
+    color: green;
+}
     border-width: 1px;
     margin-bottom: 15px;
     font-size: 17px;
