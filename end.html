@@ -1,3 +1,4 @@
+html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,24 +10,22 @@
 <body>
 <center>
     <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
-    <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
+    <h2 style="font-size: 20px; color:green; font-weight:bold;">hp</h2>
     <div id="border">
         <br><br>
-        <button id="logout" class="button">sign out</button>
-    </div>
-    <!-- New section for CSV to JSON conversion -->
-    <div id="csv-to-json-section">
-        <h2>Convert CSV to JSON</h2>
-        <textarea id="csvInput" placeholder="Paste CSV text here"></textarea><br>
-        <button id="convertButton">Convert to JSON</button>
-        <textarea id="jsonOutput" readonly></textarea>
+    <button id="logout" class="button">sign out</button>
     </div>
 </center>
 
 <script type="module">
+
+
      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
@@ -43,31 +42,7 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-  // Function to convert CSV to JSON
-function convertCSVtoJSON(csvText) {
-    const lines = csvText.split('\n');
-    const result = [];
-    const headers = lines[0].split(',');
-
-    for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        const currentline = lines[i].split(',');
-
-        for (let j = 0; j < headers.length; j++) {
-            obj[headers[j]] = currentline[j];
-        }
-        result.push(obj);
-    }
-    return JSON.stringify(result, null, 4);
-}
-
-document.getElementById('convertButton').addEventListener('click', function() {
-    const csvText = document.getElementById('csvInput').value;
-    const jsonOutput = convertCSVtoJSON(csvText);
-    document.getElementById('jsonOutput').value = jsonOutput;
-});
-
-document.getElementById('logout').addEventListener('click',function (){
+   document.getElementById('logout').addEventListener('click',function (){
          signOut(auth).then(() => {
           window.alert('Logged out sucessfully!');
           location.replace('index.html')
@@ -75,6 +50,7 @@ document.getElementById('logout').addEventListener('click',function (){
           console.log(error.message);
         });
     });
+
 </script>
 </body>
 </html>
