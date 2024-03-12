@@ -2,7 +2,7 @@
     text-align: center;
     font-size: 70px;
     font-weight:800;
-    color: white;
+    color: blue; /* Modified line: Changed color from white to blue */
     margin-top: 100px;
     margin-bottom: 100px;
 }
