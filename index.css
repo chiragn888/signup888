@@ -1,4 +1,4 @@
-```css
+css
 #sign-in{
     text-align: center;
     font-size: 70px;
@@ -24,7 +24,7 @@
     color: white;
 }
 .input-field1:hover{
-    zoom: 105%;
+    zoom: 45%;
 }
 .input-field2{
     width :90%;
@@ -43,7 +43,7 @@
     color: white;
 }
 .input-field2:hover{
-    zoom: 105%;
+    zoom: 45%;
 }
 .button{
     width :80%;
@@ -57,7 +57,7 @@
     margin-top: 10px;
 }
 .button:hover{
-   zoom: 105%;
+   zoom: 45%;
     cursor: pointer;
 }
 
@@ -102,7 +102,7 @@
     background-color: white;
 }
 .gbutton:hover{
-    zoom: 105%;
+    zoom: 45%;
     cursor: pointer;
 }
 
@@ -158,4 +158,3 @@
 .back {
   transform: rotateY(180deg);
 }
-```
