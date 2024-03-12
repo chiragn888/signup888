@@ -2,9 +2,9 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Sign-in</title>
+    <title>CSV2JSON</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -53,30 +53,34 @@
 </div>
 </center>
 
+<div id="csv-to-json-section">
+    <h2>Paste CSV here:</h2>
+    <textarea id="csv-textarea" rows="10" cols="50" placeholder="Paste CSV text here"></textarea><br>
+    <button id="convert-button" class="button">Convert to JSON</button>
+    <h3>JSON Output:</h3>
+    <textarea id="json-output" rows="10" cols="50" readonly></textarea>
+</div>
+
 <script type="module">
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
-
-
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
@@ -129,7 +133,6 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
 
 <script type="module">
 
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 const auth = getAuth();
    document.getElementById('sign-up-button').addEventListener('click',function (ev){
        ev.preventDefault
@@ -161,5 +164,4 @@ const auth = getAuth();
 
 
 </body>
-
 </html>

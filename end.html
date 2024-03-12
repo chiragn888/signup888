@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>home page</title>
+    <title>CSV2JSON</title>
     <link rel="stylesheet" href="index.css">
     <link href="index.html">
 </head>
@@ -10,30 +10,32 @@
 <center>
     <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
+    <div id="csv-to-json-section">
+        <h2>Paste CSV here:</h2>
+        <textarea id="csv-textarea" rows="10" cols="50" placeholder="Paste CSV text here"></textarea><br>
+        <button id="convert-button" class="button">Convert to JSON</button>
+        <h3>JSON Output:</h3>
+        <textarea id="json-output" rows="10" cols="50" readonly></textarea>
+    </div>
     <div id="border">
         <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">sign out</button>
     </div>
 </center>
 
 <script type="module">
-
-
-     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
@@ -41,15 +43,35 @@
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
 
-   document.getElementById('logout').addEventListener('click',function (){
-         signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
-          location.replace('index.html')
-        }).catch((error) => {
-          console.log(error.message);
-        });
-    });
+  document.getElementById('convert-button').addEventListener('click', function() {
+    var csvText = document.getElementById('csv-textarea').value;
+    var jsonOutput = csvToJson(csvText);
+    document.getElementById('json-output').value = jsonOutput;
+  });
 
+  document.getElementById('logout').addEventListener('click',function (){
+    signOut(auth).then(() => {
+      window.alert('Logged out sucessfully!');
+      location.replace('index.html')
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  });
+
+  function csvToJson(csv) {
+    var lines = csv.split("\n");
+    var result = [];
+    var headers = lines[0].split(",");
+    for (var i = 1; i < lines.length; i++) {
+      var obj = {};
+      var currentline = lines[i].split(",");
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+      }
+      result.push(obj);
+    }
+    return JSON.stringify(result, null, 4);
+  }
 </script>
 </body>
 </html>
