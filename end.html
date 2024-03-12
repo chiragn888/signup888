@@ -9,7 +9,7 @@ html
 </head>
 <body>
 <center>
-    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Hi this is home page</h1>
+    <h1 style="font-size: 40px;font-family:'.AppleSystemUIFont';margin-top: 100px">Home</h1>
     <h2 style="font-size: 20px; color:green; font-weight:bold;">hp</h2>
     <div id="border">
         <br><br>
@@ -40,11 +40,12 @@ html
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-  const auth = getAuth(app);
+
+   const auth = getAuth(app);
 
    document.getElementById('logout').addEventListener('click',function (){
          signOut(auth).then(() => {
-          window.alert('Logged out sucessfully!');
+          window.alert('Logged out successfully!');
           location.replace('index.html')
         }).catch((error) => {
           console.log(error.message);
