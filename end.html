@@ -12,19 +12,22 @@
     <h2 style="font-size: 20px; color:green; font-weight:bold;">You are on the home page</h2>
     <div id="border">
         <br><br>
-    <button id="logout" class="button">sign out</button>
+        <button id="logout" class="button">sign out</button>
+    </div>
+
+    <!-- CSV to JSON Converter Section -->
+    <div class="csv-json-converter">
+        <h3>CSV to JSON Converter</h3>
+        <textarea id="csvInput" placeholder="Paste CSV text here"></textarea><br>
+        <button id="convertCsvToJsonButton">Convert to JSON</button><br>
+        <textarea id="jsonOutput" readonly placeholder="JSON result will appear here"></textarea>
     </div>
 </center>
 
 <script type="module">
-
-
      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergddW-XRw",
@@ -50,6 +53,29 @@
         });
     });
 
+// CSV to JSON conversion logic
+document.getElementById('convertCsvToJsonButton').addEventListener('click', function() {
+    var csvText = document.getElementById('csvInput').value;
+    var jsonResult = convertCSVtoJSON(csvText);
+    document.getElementById('jsonOutput').value = jsonResult;
+});
+
+function convertCSVtoJSON(csv) {
+    var lines = csv.split("\n");
+    var result = [];
+    var headers = lines[0].split(",");
+
+    for (var i = 1; i < lines.length; i++) {
+        var obj = {};
+        var currentline = lines[i].split(",");
+
+        for (var j = 0; j < headers.length; j++) {
+            obj[headers[j]] = currentline[j];
+        }
+        result.push(obj);
+    }
+    return JSON.stringify(result, null, 4);
+}
 </script>
 </body>
 </html>
