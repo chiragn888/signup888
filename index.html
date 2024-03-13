@@ -4,7 +4,7 @@
 <head>
     <title>Sign-in</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -13,7 +13,7 @@
     <div class="front">
   <div id="part1" >
 
-<center><h1 id="sign-in">Sign In</h1></center>
+<center><h1 id="sign-in" style="color: green;">Sign In</h1></center>
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
@@ -34,7 +34,7 @@
     <div class="back">
   <div id="part2" >
 
-<h1 id="sign-up">Sign Up</h1>
+<h1 id="sign-up" style="color: green;">Sign Up</h1>
 <center>
 <div id="border1">
     <p id="errormessage1" style="color: red;font-size: 20px"></p>
@@ -57,26 +57,22 @@
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+  import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
+    authDomain: "new-firebase-b4a29.firebaseapp.com",
+    projectId: "new-firebase-b4a29",
+    storageBucket: "new-firebase-b4a29.appspot.com",
+    messagingSenderId: "318345862940",
+    appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
+    measurementId: "G-F7GMN64KLE"
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth(app);
-
-
 
   document.getElementById('sign-in-button').addEventListener('click',function (){
       var email= document.getElementById('lemail').value;
@@ -129,7 +125,6 @@ document.getElementById('google-button1').addEventListener('click',Googlelogin);
 
 <script type="module">
 
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 const auth = getAuth();
    document.getElementById('sign-up-button').addEventListener('click',function (ev){
        ev.preventDefault
