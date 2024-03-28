@@ -1,0 +1,31 @@
+Sure, I can help you with that. Here's the code to create the 'universe.svg' file with graphics depicting stars, planets, and galaxies:
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Stars -->
+  <circle cx="10" cy="15" r="1" fill="#fff" />
+  <circle cx="30" cy="20" r="1" fill="#fff" />
+  <circle cx="50" cy="10" r="1" fill="#fff" />
+  <circle cx="70" cy="25" r="1" fill="#fff" />
+  <circle cx="90" cy="12" r="1" fill="#fff" />
+
+  <!-- Planets -->
+  <circle cx="25" cy="60" r="8" fill="#4d4d4d" />
+  <circle cx="60" cy="40" r="12" fill="#666" />
+  <circle cx="80" cy="70" r="10" fill="#333" />
+
+  <!-- Galaxies -->
+  <path d="M10 90 Q30 70 50 90 Q70 70 90 90" fill="none" stroke="#999" />
+</svg>
+```
+
+Next, I will reference the 'universe.svg' in the 'index.css' file to use it as a background or decorative element on the page:
+
+```css
+body {
+  background: url('universe.svg') no-repeat center center fixed;
+  background-size: cover;
+}
+```
+
+With these modifications, the 'universe.svg' file will be created with the specified graphics, and it will be styled with colors and elements to complement the dark background of the landing page. The SVG will also be referenced in 'index.css' to be used as a background or decorative element on the page.
