@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Enquiry Form</title>
+</head>
+<body>
+    <form id="enquiryForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div>
+            <label for="query">Query:</label>
+            <textarea id="query" name="query" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach(function(value, key){
+                formObject[key] = value;
+            });
+            const jsonForm = JSON.stringify(formObject);
+
+            fetch('https://api.example.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonForm
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Add any further handling or redirection here
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Add error handling here
+            });
+        });
+    </script>
+</body>
+</html>

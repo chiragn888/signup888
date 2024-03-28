@@ -1,0 +1,65 @@
+To address the plan for modification of the code, I will add the necessary CSS styles for the new enquiry form and link, ensuring they are consistent with the existing site design. The styles will be namespaced to apply only to the enquiry form.
+
+Here is the modified CSS code:
+
+```css
+/* Existing CSS code... */
+
+/* Additional styles for the enquiry form */
+.enquiry-form .input-field {
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 8px;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #ffffff;
+    color: white;
+    border-width: 1px;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.enquiry-form .input-field::placeholder {
+    color: white;
+}
+
+.enquiry-form .input-field:hover {
+    zoom: 105%;
+}
+
+.enquiry-form .button {
+    width: 80%;
+    height: 37px;
+    border-radius: 4px;
+    font-size: 16px;
+    border-style: none;
+    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.enquiry-form .button:hover {
+    zoom: 105%;
+    cursor: pointer;
+}
+
+/* Style for the "Add Enquiry" link */
+.add-enquiry-link {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.add-enquiry-link:hover {
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+/* Rest of the existing CSS code... */
+```
+
+This CSS will ensure that the new enquiry form and the "Add Enquiry" link are styled in a manner consistent with the existing design of the site. The `.enquiry-form` class is used to namespace the styles for the form fields and submit button, so they only apply to the enquiry form elements. The `.add-enquiry-link` class is used to style the "Add Enquiry" link.
