@@ -1,0 +1,33 @@
+To address the plan of action for modifying the `index.html` file, we will add a new link element that points to 'enquiry.html'. The link will be styled consistently with other elements on the page using 'index.css'. Here is the updated section of the `index.html` file:
+
+```html
+<!-- Existing navigation or appropriate section comes here -->
+<!-- Add the new link element below -->
+<p><a href="enquiry.html" id="add-enquiry" class="fp1">Add Enquiry</a></p>
+<!-- Continue with the rest of the HTML content -->
+```
+
+For the `index.css` file, we will ensure that the new form elements on 'enquiry.html' are styled consistently with the existing design. Since the existing CSS classes such as `.input-field1`, `.input-field2`, and `.button` are already defined and we are instructed to use these for the form elements in 'enquiry.html', no additional CSS modifications are necessary for the form elements themselves. However, if we need to ensure that the new link "Add Enquiry" is styled consistently, we might add or modify CSS as follows:
+
+```css
+/* Existing CSS styles come here */
+
+/* Add or modify CSS for the "Add Enquiry" link if necessary */
+#add-enquiry {
+    color: white;
+    font-size: 12px;
+    font-family: ".AppleSystemUIFont";
+    text-decoration: none;
+    margin-bottom: 10px;
+    margin-top: 35px;
+}
+
+#add-enquiry:hover {
+    color: dodgerblue;
+    cursor: pointer;
+}
+
+/* Continue with the rest of the CSS content */
+```
+
+This ensures that the "Add Enquiry" link is styled with the same color, font size, and hover effect as other similar elements on the page.
