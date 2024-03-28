@@ -1,0 +1,30 @@
+To implement the plan for modification, we will add an anchor tag with the text "Enquiry Form" that links to 'enquiry.html'. This anchor tag will be styled consistently with other navigation links. Since the current code does not explicitly show a navigation bar, we will add the anchor tag near the existing "Sign In" and "Sign Up" sections, assuming that is where the navigation might logically be placed.
+
+Here is the modified code with the new anchor tag added to the HTML:
+
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="body">
+<center>
+<div>
+  <!-- Navigation Links Start -->
+  <div class="navigation">
+    <a href="enquiry.html" class="nav-link">Enquiry Form</a>
+    <!-- Other navigation links would be here -->
+  </div>
+  <!-- Navigation Links End -->
+  <div >
+    <div class="front">
+  <!-- Existing code continues here... -->
+```
+
+I have added a `div` with the class `navigation` to contain the navigation links, and within it, an anchor tag with the class `nav-link` that points to 'enquiry.html'. The class `nav-link` should be styled in the 'index.css' file to match the styling of other navigation links. If there is an existing navigation bar or menu in the actual code, the new anchor tag should be added there instead.
+
+Make sure to update the 'index.css' file to style the `.nav-link` class appropriately if it's not already styled.
