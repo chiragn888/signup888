@@ -1,163 +1,44 @@
-#sign-in{
-    text-align: center;
-    font-size: 70px;
-    font-weight:800;
-    color: white;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-.input-field1{
-    width :90%;
-    height: 50px;
-    padding-left: 20px;
-    border-radius: 8px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    color: white;
-    border-width: 1px;
-    margin-bottom: 20px;
-    font-size: 17px;
-}
-.input-field1::placeholder{
-    color: white;
-}
-.input-field1:hover{
-    zoom: 105%;
-}
-.input-field2{
-    width :90%;
-    height: 50px;
-    padding-left: 20px;
-    border-radius: 8px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    color: white;
-    border-width: 1px;
-    margin-bottom: 15px;
-    font-size: 17px;
-}
-.input-field2::placeholder{
-    color: white;
-}
-.input-field2:hover{
-    zoom: 105%;
-}
-.button{
-    width :80%;
-    height: 37px;
-    border-radius: 4px;
-    font-size: 16px;
-    border-style: none;
-    background-image: linear-gradient(to right, #7f55ad, #3c96f5);
-    color: white;
-    margin-bottom: 15px;
-    margin-top: 10px;
-}
-.button:hover{
-   zoom: 105%;
-    cursor: pointer;
-}
-#border{
-    height: 500px;
-    width: 400px;
-}
+To address the plan of action for the HTML file, I will add a link to 'enquiry.html' labeled "Add Enquiry" in a prominent location on the landing page and ensure it is styled using 'index.css'.
 
-#fp{
-    color: white;
-    font-size: 15px;
-    font-family: ".AppleSystemUIFont";
-    text-decoration: none;
-    margin-bottom: 10px;
+Here is the modified HTML code:
+
+```html
+<!-- ... existing code ... -->
+
+<p><a href="enquiry.html" id="add-enquiry" class="fp1" style="text-decoration: none">Add Enquiry</a></p>
+
+<!-- ... existing code ... -->
+
+<script src="index.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<!-- ... existing code ... -->
+```
+
+And for the CSS file, I will add styles for the new enquiry form fields to match the existing design of the site:
+
+```css
+/* ... existing styles ... */
+
+/* Style for Add Enquiry link */
+#add-enquiry {
+    display: inline-block;
     margin-top: 20px;
-}
-#fp:hover{
-    color: dodgerblue;
-}
-.fp1{
-    color: white;
-    font-size: 12px;
-    font-family: ".AppleSystemUIFont";
-    text-decoration: none;
-    margin-bottom: 10px;
-    margin-top: 35px;
-}
-.fp1:hover{
-    color: dodgerblue;
-    cursor: pointer;
-}
-::-webkit-scrollbar{
-    overflow: hidden ;
-}
-.body{
-    background-color: #050505;
-    height: max-content;
-    top: 0;
-    margin-top: 0;
-    padding-top: 0;
-}
-.gbutton {
-    width: 60%;
-    padding-left: 20%;
-    height: 37px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #3c96f5;
+    padding: 10px 20px;
     border-radius: 4px;
-    background-color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
-.gbutton:hover{
-    zoom: 105%;
+
+#add-enquiry:hover {
+    background-color: #7f55ad;
     cursor: pointer;
 }
 
-#sign-up{
-    text-align: center;
-    font-size: 70px;
-    font-weight:800;
-    color: white;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-#border1{
-    height: 500px;
-    width: 400px;
-}
-#part1{
-    display: block;
-    background-color: black;
-}
-#part2{
-    display: block;
-    background-color: black;
-}
+/* ... existing styles ... */
+```
 
-.flip-container {
-  perspective: 1000px;
-}
-.flip-container.hover .flipper {
-  transform: rotateY(180deg);
-}
-.flip-container,
-.front,
-.back {
-  width: 100%;
-  height: 700px;
-}
-.flipper {
-  transition: 1.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-.front,
-.back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.front {
-  z-index: 2;
-  transform: rotateY(0deg);
-}
-.back {
-  transform: rotateY(180deg);
-}
+These changes will integrate the "Add Enquiry" link into the landing page and style it to match the site's design. The CSS will ensure that the link is visually consistent with other elements on the page.
