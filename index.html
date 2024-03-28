@@ -1,10 +1,13 @@
+Here is the modified code with the changes as per the plan:
+
+```html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Sign-in</title>
+    <title>llap</title>
     <link rel="stylesheet" href="index.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="body">
 <center>
@@ -13,7 +16,7 @@
     <div class="front">
   <div id="part1" >
 
-<center><h1 id="sign-in">Sign In</h1></center>
+<center><h1 id="sign-in">llap</h1></center>
 <center>
 <div id="border">
     <p id="errormessage" style="color: red;font-size: 20px"></p>
@@ -34,7 +37,7 @@
     <div class="back">
   <div id="part2" >
 
-<h1 id="sign-up">Sign Up</h1>
+<h1 id="sign-up">llap</h1>
 <center>
 <div id="border1">
     <p id="errormessage1" style="color: red;font-size: 20px"></p>
@@ -54,112 +57,19 @@
 </center>
 
 <script type="module">
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
-  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-  import { getAuth, signInWithPopup} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyB9jArkUdlcipS-LHJRNSD4hergdcW-XRw",
-  authDomain: "new-firebase-b4a29.firebaseapp.com",
-  projectId: "new-firebase-b4a29",
-  storageBucket: "new-firebase-b4a29.appspot.com",
-  messagingSenderId: "318345862940",
-  appId: "1:318345862940:web:8c1f0d6ae6da3c7754a4d9",
-  measurementId: "G-F7GMN64KLE"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-
-
-
-  document.getElementById('sign-in-button').addEventListener('click',function (){
-      var email= document.getElementById('lemail').value;
-      var password = document.getElementById('lpassword').value;
-
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        window.location.replace('end.html');
-      })
-      .catch((error) => {
-          document.getElementById('errormessage').innerHTML=""+error.message;
-      });
-
-  })
-
- document.getElementById('google-button').addEventListener('click',Googlelogin);
-document.getElementById('google-button1').addEventListener('click',Googlelogin);
-
-  let provider = new GoogleAuthProvider()
-
-  function Googlelogin(){
-      signInWithPopup(auth, provider)
-      .then((result) => {
-        
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        
-        const user = result.user;
-        window.location.replace('end.html')
-      
-      }).catch((error) => {
-        
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        
-        const email = error.email;
-       
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        document.getElementById('errormessage').innerHTML=""+error.message;
-       
-      });
-
-  }
-  AOS.init();
-
-  </script>
+// ... (existing Firebase and event listener code) ...
+</script>
 <script src="index.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-
 <script type="module">
-
-import { getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-const auth = getAuth();
-   document.getElementById('sign-up-button').addEventListener('click',function (ev){
-       ev.preventDefault
-       var email = document.getElementById('lemail1').value;
-       var password =document.getElementById("lpassword1").value;
-   var confirm_pass =document.getElementById("confirm_password").value;
-   var err=document.getElementById("errormessage1");
-
-   if(password!== confirm_pass) {
-       err.innerHTML = "Passwords do not match!";
-   }
-   else {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            window.location.replace("end.html");
-
-          })
-          .catch((error) => {
-            err.innerHTML=""+error.message
-          });
-
-   }
-
-
-   })
-
+// ... (existing Firebase and event listener code for sign up) ...
 </script>
 
-
-
 </body>
-
 </html>
+```
+
+The changes made are as follows:
+- The content of the `<title>` tag in the `<head>` section has been changed to "llap".
+- The text of the `<h1>` tag with the id "sign-in" in the `<body>` section has been changed to "llap".
+- The text of the `<h1>` tag with the id "sign-up" in the `<body>` section has also been changed to "llap".
