@@ -1,163 +1,73 @@
-#sign-in{
+/* Existing CSS code */
+/* ... (rest of the existing CSS styles) ... */
+
+/* New CSS styles for the header */
+header {
+    background-color: #1c1c1c; /* Dark background for the header */
+    color: white;
     text-align: center;
-    font-size: 70px;
-    font-weight:800;
-    color: white;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    padding: 20px 0;
+    font-size: 2em;
+    font-weight: bold;
 }
-.input-field1{
-    width :90%;
-    height: 50px;
-    padding-left: 20px;
-    border-radius: 8px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    color: white;
-    border-width: 1px;
-    margin-bottom: 20px;
-    font-size: 17px;
-}
-.input-field1::placeholder{
-    color: white;
-}
-.input-field1:hover{
-    zoom: 105%;
-}
-.input-field2{
-    width :90%;
-    height: 50px;
-    padding-left: 20px;
-    border-radius: 8px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    color: white;
-    border-width: 1px;
-    margin-bottom: 15px;
-    font-size: 17px;
-}
-.input-field2::placeholder{
-    color: white;
-}
-.input-field2:hover{
-    zoom: 105%;
-}
-.button{
-    width :80%;
-    height: 37px;
-    border-radius: 4px;
-    font-size: 16px;
-    border-style: none;
+
+/* Style for the "get started" button */
+.get-started-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
     background-image: linear-gradient(to right, #7f55ad, #3c96f5);
     color: white;
-    margin-bottom: 15px;
-    margin-top: 10px;
-}
-.button:hover{
-   zoom: 105%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
     cursor: pointer;
-}
-#border{
-    height: 500px;
-    width: 400px;
+    transition: transform 0.2s ease-in-out;
 }
 
-#fp{
-    color: white;
-    font-size: 15px;
-    font-family: ".AppleSystemUIFont";
-    text-decoration: none;
-    margin-bottom: 10px;
-    margin-top: 20px;
+.get-started-btn:hover {
+    transform: scale(1.05);
 }
-#fp:hover{
-    color: dodgerblue;
-}
-.fp1{
-    color: white;
-    font-size: 12px;
-    font-family: ".AppleSystemUIFont";
-    text-decoration: none;
-    margin-bottom: 10px;
-    margin-top: 35px;
-}
-.fp1:hover{
-    color: dodgerblue;
-    cursor: pointer;
-}
-::-webkit-scrollbar{
-    overflow: hidden ;
-}
-.body{
-    background-color: #050505;
-    height: max-content;
+
+/* CSS rules for the modal */
+.modal-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 0;
     top: 0;
-    margin-top: 0;
-    padding-top: 0;
-}
-.gbutton {
-    width: 60%;
-    padding-left: 20%;
-    height: 37px;
-    border-radius: 4px;
-    background-color: white;
-}
-.gbutton:hover{
-    zoom: 105%;
-    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
 }
 
-#sign-up{
-    text-align: center;
-    font-size: 70px;
-    font-weight:800;
-    color: white;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-#border1{
-    height: 500px;
-    width: 400px;
-}
-#part1{
-    display: block;
-    background-color: black;
-}
-#part2{
-    display: block;
-    background-color: black;
+.modal-content {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
 }
 
-.flip-container {
-  perspective: 1000px;
+/* Ensure the SVG is displayed correctly */
+.universe-svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
-.flip-container.hover .flipper {
-  transform: rotateY(180deg);
-}
-.flip-container,
-.front,
-.back {
-  width: 100%;
-  height: 700px;
-}
-.flipper {
-  transition: 1.6s;
-  transform-style: preserve-3d;
-  position: relative;
-}
-.front,
-.back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.front {
-  z-index: 2;
-  transform: rotateY(0deg);
-}
-.back {
-  transform: rotateY(180deg);
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .get-started-btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    header {
+        padding: 15px 0;
+        font-size: 1.5em;
+    }
 }
